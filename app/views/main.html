@@ -1,0 +1,49 @@
+<div class="container-fluid">
+   <div class="row-fluid">
+       <div class="span4">
+           <!--Sidebar content-->
+           Current Time is: <span my-current-time="format"></span>
+
+           <ul >
+               <h3>Live Temperature Sensor Data </h3>
+               <li ng-repeat="t in temp_data">
+                   <p> Time: {{t.time}}</p>
+                   <p> Temperature: {{t.temp}}</p>
+               </li>
+           </ul>
+       </div>
+   <div class="span8">
+       <!--Body content-->
+    <h1>Accelerometer Readings</h1>
+
+    <linegraph id="d3line_x" datajson="json/x-coordinate.json"
+               xaxis-name = "Time"
+               xaxis-pos = ""
+               yaxis-name = "Amplitude X"
+               yaxis-pos = "12"
+               />
+     <button ng-click="printFFT('x')">FFT_X</button>
+     <linegraph id="d3line_y" datajson="json/y-coordinate.json"
+                   xaxis-name = "Time"
+                   xaxis-pos = ""
+                   yaxis-name = "Amplitude Y"
+                   yaxis-pos = "12"
+                />
+     <button ng-click="printFFT('y')">FFT_Y</button>
+     <linegraph id="d3line_z" datajson="json/z-coordinate.json"
+                    xaxis-name = "Time"
+                    xaxis-pos = ""
+                    yaxis-name = "Amplitude Z"
+                    yaxis-pos = "12"
+                />
+       <button ng-click="printFFT('z')">FFT_Z</button>
+       <ul >
+           <li ng-repeat="f in data">
+               <p> Frequency: {{f[0]}}</p>
+               <p> Magnitude: {{f[1]}}</p>
+           </li>
+       </ul>
+     </div>
+    </div>
+</div>
+
